@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use backend\assets\AppAsset;
+use vcms\admin\Menu;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -131,7 +132,19 @@ AppAsset::register($this);
             </div>
         </nav>
     </header>
-
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <?=Menu::widget([
+                'items' => [
+                    ['label' => 'Home', 'url' => ['site/index'], 'icon' => 'fa fa-dashboard'],
+                    ['label' => 'Products', 'url' => ['product/index'], 'items' => [
+                        ['label' => 'New Arrivals', 'url' => ['product/index', 'tag' => 'new']],
+                        ['label' => 'Most Popular', 'url' => ['product/index', 'tag' => 'popular']],
+                    ], 'icon' => 'fa fa-th'],
+                ],
+            ]);?>
+        </section>
+    </aside>
 </div>
 
 

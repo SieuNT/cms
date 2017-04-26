@@ -21,7 +21,7 @@ class Menu extends \yii\widgets\Menu {
 
             return strtr($template, [
                 '{url}' => Html::encode(Url::to($item['url'])),
-                '{icon}' => isset($item['icon']) ? $item['icon'] : NULL,
+                '{icon}' => isset($item['icon']) ? $item['icon'] : 'fa fa-circle-o',
                 '{label}' => $item['label'],
             ]);
         } else {
