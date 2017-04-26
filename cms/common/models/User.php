@@ -11,7 +11,7 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
- * @property string $username
+ * @property string $full_name
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
@@ -23,8 +23,15 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_DEACTIVATED = 0;
+    const STATUS_ACTIVE = 1;
+
+    const ROLE_BANNED = 'BANNED';
+    const ROLE_MEMBER = 'MEMBER';
+    const ROLE_EDITOR = 'EDITOR';
+    const ROLE_MANAGER = 'MANAGER';
+    const ROLE_ADMIN = 'ADMIN';
+    const ROLE_SUPER_ADMIN = 'SUPER_ADMIN';
 
 
     /**
@@ -52,7 +59,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DEACTIVATED]],
         ];
     }
 
@@ -73,14 +80,14 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Finds user by username
+     * Finds user by email
      *
-     * @param string $username
+     * @param string $email
      * @return static|null
      */
-    public static function findByUsername($username)
+    public static function findByUsername($email)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
