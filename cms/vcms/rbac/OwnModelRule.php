@@ -1,6 +1,6 @@
 <?php
 
-namespace vinacms\rbac;
+namespace vcms\rbac;
 
 use yii\rbac\Item;
 use yii\rbac\Rule;

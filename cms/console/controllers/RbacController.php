@@ -3,10 +3,9 @@
 namespace console\controllers;
 
 use common\models\User;
-use vinacms\rbac\OwnModelRule;
+use vcms\rbac\OwnModelRule;
 use yii\console\Controller;
 use yii\db\Exception;
-use yii\db\QueryBuilder;
 use yii\helpers\Console;
 
 class RbacController extends Controller {
