@@ -122,9 +122,9 @@ AppAsset::register($this);
                         <?= Html::beginForm(['/site/logout'], 'post')
                         . Html::submitButton(
                             '<i class="fa fa-user"></i> Thoát (' . Yii::$app->user->identity->full_name . ')',
-                        [
-                            'class' => 'btn btn-link btn-logout'
-                        ]
+                            [
+                                'class' => 'btn btn-link btn-logout'
+                            ]
                         )
                         . Html::endForm(); ?>
                     </li>
@@ -134,7 +134,7 @@ AppAsset::register($this);
     </header>
     <aside class="main-sidebar">
         <section class="sidebar">
-            <?=Menu::widget([
+            <?= Menu::widget([
                 'items' => [
                     ['label' => 'Home', 'url' => ['site/index'], 'icon' => 'fa fa-dashboard'],
                     ['label' => 'Products', 'url' => ['product/index'], 'items' => [
@@ -142,19 +142,32 @@ AppAsset::register($this);
                         ['label' => 'Most Popular', 'url' => ['product/index', 'tag' => 'popular']],
                     ], 'icon' => 'fa fa-th'],
                 ],
-            ]);?>
+            ]); ?>
         </section>
     </aside>
-</div>
-
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                <?= $this->title ?>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </section>
+        <section class="content">
+            <?= $content ?>
+        </section>
     </div>
-</footer>
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            &copy; My Company <?= date('Y') ?>
+        </div>
+        <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+        reserved.
+    </footer>
+</div>
 
 <?php $this->endBody() ?>
 </body>
