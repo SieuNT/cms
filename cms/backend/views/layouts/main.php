@@ -141,6 +141,9 @@ AppAsset::register($this);
                         ['label' => 'New Arrivals', 'url' => ['product/index', 'tag' => 'new']],
                         ['label' => 'Most Popular', 'url' => ['product/index', 'tag' => 'popular']],
                     ], 'icon' => 'fa fa-th'],
+                    ['label' => 'Trang cá nhân', 'url' => null, 'options' => ['class' => 'header']],
+                    ['label' => 'Hồ sơ', 'url' => ['user/profile', 'id' => Yii::$app->user->identity->getId()], 'icon' => 'fa fa-circle-o text-aqua'],
+                    ['label' => 'Đổi mật khẩu', 'url' => ['user/password', 'id' => Yii::$app->user->identity->getId()], 'icon' => 'fa fa-circle-o text-yellow'],
                 ],
             ]); ?>
         </section>
