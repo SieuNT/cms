@@ -116,8 +116,11 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
-
+/*-------CUSTOM Grid----------*/
 .header {
     text-transform: uppercase;
     color: #fff0f0;
+}
+.grid-view .summary {
+    padding: 5px 15px;
 }

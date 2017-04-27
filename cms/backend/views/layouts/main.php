@@ -20,7 +20,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode($this->title) ?> | vCMS</title>
     <?php $this->head() ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -136,14 +136,11 @@ AppAsset::register($this);
         <section class="sidebar">
             <?= Menu::widget([
                 'items' => [
-                    ['label' => 'Home', 'url' => ['site/index'], 'icon' => 'fa fa-dashboard'],
-                    ['label' => 'Products', 'url' => ['product/index'], 'items' => [
-                        ['label' => 'New Arrivals', 'url' => ['product/index', 'tag' => 'new']],
-                        ['label' => 'Most Popular', 'url' => ['product/index', 'tag' => 'popular']],
-                    ], 'icon' => 'fa fa-th'],
+                    ['label' => 'Dashboard', 'url' => ['site/index'], 'icon' => 'fa fa-dashboard'],
+                    ['label' => 'Thành viên', 'url' => ['member/index'], 'icon' => 'fa fa-user'],
                     ['label' => 'Trang cá nhân', 'url' => null, 'options' => ['class' => 'header']],
-                    ['label' => 'Hồ sơ', 'url' => ['user/profile', 'id' => Yii::$app->user->identity->getId()], 'icon' => 'fa fa-circle-o text-aqua'],
-                    ['label' => 'Đổi mật khẩu', 'url' => ['user/password', 'id' => Yii::$app->user->identity->getId()], 'icon' => 'fa fa-circle-o text-yellow'],
+                    ['label' => 'Hồ sơ', 'url' => ['member/profile', 'id' => Yii::$app->user->identity->getId()], 'icon' => 'fa fa-circle-o text-aqua'],
+                    ['label' => 'Đổi mật khẩu', 'url' => ['member/password', 'id' => Yii::$app->user->identity->getId()], 'icon' => 'fa fa-circle-o text-yellow'],
                 ],
             ]); ?>
         </section>
@@ -158,7 +155,11 @@ AppAsset::register($this);
             ]) ?>
         </section>
         <section class="content">
-            <?= $content ?>
+            <div class="row">
+                <div class="col-xs-12">
+                    <?= $content ?>
+                </div>
+            </div>
         </section>
     </div>
     <footer class="main-footer">
