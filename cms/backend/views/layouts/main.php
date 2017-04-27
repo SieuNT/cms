@@ -165,10 +165,9 @@ AppAsset::register($this);
     </div>
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            &copy; My Company <?= date('Y') ?>
+            &copy;vCMS 2004 - <?= date('Y') ?>
         </div>
-        <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-        reserved.
+        <strong>Phát triển bởi <a href="mailto:dev.phpjs@gmail.com">Siêu™</a>
     </footer>
 </div>
 
