@@ -1,14 +1,14 @@
 <?php
 
 use yii\helpers\Html;
-use vinacms\admin\ActiveForm;
+use vcms\admin\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Member */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="member-form">
+<div class="box-body member-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

@@ -10,7 +10,7 @@ $this->title = Yii::t('app', 'Member');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Members'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="panel-body member-create">
+<div class="box member-create">
 
     <?= $this->render('_form', [
         'model' => $model,
