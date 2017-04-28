@@ -1,4 +1,7 @@
 <?php
+use common\models\User;
+use vcms\behaviors\GlobalAccessBehavior;
+
 $params = array_merge(
     require(__DIR__ . '/../../cms/common/config/params.php'),
     require(__DIR__ . '/../../cms/common/config/params-local.php'),
@@ -42,6 +45,44 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '/' => 'site/index'
+            ],
+        ],
+    ],
+    'as globalAccess' => [
+        'class' => GlobalAccessBehavior::className(),
+        'rules' => [
+            [
+                'controllers' => ['gii/default'],
+                'allow' => true,
+                'roles' => [User::ROLE_SUPER_ADMIN],
+            ],
+            [
+                'controllers' => ['site'],
+                'allow' => true,
+                'actions' => ['login'],
+                'roles' => ['?'],
+            ],
+            [
+                'controllers' => ['site'],
+                'allow' => true,
+                'actions' => ['logout'],
+                'roles' => ['@'],
+            ],
+            [
+                'controllers' => ['site'],
+                'allow' => true,
+                'actions' => ['error'],
+                'roles' => ['?', '@'],
+            ],
+            [
+                'controllers' => ['site'],
+                'allow' => true,
+                'roles' => ['accessBackend'],
+            ],
+            [
+                'controllers' => ['member'],
+                'allow' => true,
+                'roles' => [User::ROLE_ADMIN],
             ],
         ],
     ],

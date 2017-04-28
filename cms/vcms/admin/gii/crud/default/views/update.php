@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = ['label' => <?= $generator->generateString(Infl
 $this->params['breadcrumbs'][] = ['label' => $model-><?= $generator->getNameAttribute() ?>, 'url' => ['view', <?= $urlParams ?>]];
 $this->params['breadcrumbs'][] = <?= $generator->generateString('Update') ?>;
 ?>
-<div class="panel-body <?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-update">
+<div class="box <?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-update">
 
     <?= "<?= " ?>$this->render('_form', [
         'model' => $model,

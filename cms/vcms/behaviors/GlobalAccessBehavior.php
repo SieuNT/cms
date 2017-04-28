@@ -1,6 +1,6 @@
 <?php
 
-namespace vinacms\behaviors;
+namespace vcms\behaviors;
 
 use Yii;
 use yii\base\Behavior;
