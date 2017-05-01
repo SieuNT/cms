@@ -16,4 +16,6 @@ return [
     'Status' => 'Trạng thái',
     'Active' => 'Kích hoạt',
     'Deactivated' => 'Ngừng kích hoạt',
+    'Members' => 'Thành viên',
+    'Member' => 'Thành viên',
 ];
