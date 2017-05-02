@@ -10,19 +10,21 @@ use Yii;
  * @property integer $id
  * @property string $full_name
  * @property string $email
- * @property string $auth_key
- * @property string $password_hash
- * @property string $password_reset_token
+ * @property string $password
+ * @property string $passwordConfirm
  * @property string $avatar
  * @property string $address
  * @property string $phone_number
  * @property string $about_us
  * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
+ * @property integer $role
  */
 class Member extends \yii\db\ActiveRecord
 {
+
+    public $password;
+    public $passwordConfirm;
+    public $role;
     /**
      * @inheritdoc
      */
@@ -37,14 +39,22 @@ class Member extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['full_name', 'email', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['full_name', 'email'], 'required'],
+            [['status'], 'integer'],
             [['full_name'], 'string', 'max' => 70],
-            [['email', 'password_hash', 'password_reset_token', 'about_us'], 'string', 'max' => 255],
-            [['auth_key'], 'string', 'max' => 32],
+            [['email', 'about_us'], 'string', 'max' => 255],
             [['avatar', 'address', 'phone_number'], 'string', 'max' => 15],
             [['email'], 'unique'],
-            [['password_reset_token'], 'unique'],
+            ['password', 'required'],
+            ['password', 'string', 'min' => 6],
+            ['passwordConfirm', 'required'],
+            ['passwordConfirm', 'compare', 'compareAttribute' => 'password'],
+
+            ['status', 'default', 'value' => User::STATUS_ACTIVE],
+            ['status', 'in', 'range' => [User::STATUS_ACTIVE, User::STATUS_DEACTIVATED]],
+
+            ['role', 'default', 'value' => User::ROLE_MEMBER],
+            ['role', 'in', 'range' => [User::ROLE_BANNED, User::ROLE_MEMBER, User::ROLE_EDITOR, User::ROLE_MANAGER, User::ROLE_ADMIN, User::ROLE_SUPER_ADMIN]],
         ];
     }
 

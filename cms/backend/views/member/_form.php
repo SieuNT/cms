@@ -1,5 +1,6 @@
 <?php
 
+use common\models\User;
 use yii\helpers\Html;
 use vcms\admin\ActiveForm;
 
@@ -16,11 +17,9 @@ use vcms\admin\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password')->passwordInput() ?>
 
-    <?= $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'password_reset_token')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'passwordConfirm')->passwordInput() ?>
 
     <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
 
@@ -30,11 +29,8 @@ use vcms\admin\ActiveForm;
 
     <?= $form->field($model, 'about_us')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(User::statuses()) ?>
+    <?= $form->field($model, 'role')->dropDownList(User::roles()) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-primary m-b-5' : 'btn btn-primary m-b-5']) ?>

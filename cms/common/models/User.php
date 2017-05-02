@@ -193,4 +193,22 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    public static function statuses() {
+        return [
+            self::STATUS_ACTIVE => Yii::t('app', 'Active'),
+            self::STATUS_DEACTIVATED => Yii::t('app', 'Deactivated'),
+        ];
+    }
+
+    public static function roles() {
+        return [
+            self::ROLE_MEMBER => Yii::t('app', 'Member'),
+            self::ROLE_BANNED => Yii::t('app', 'Banned'),
+            self::ROLE_EDITOR => Yii::t('app', 'Editor'),
+            self::ROLE_MANAGER => Yii::t('app', 'Manager'),
+            self::ROLE_ADMIN => Yii::t('app', 'Admin'),
+            self::ROLE_SUPER_ADMIN => Yii::t('app', 'Super Admin'),
+        ];
+    }
 }
